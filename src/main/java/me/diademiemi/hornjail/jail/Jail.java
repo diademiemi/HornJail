@@ -16,6 +16,8 @@ public class Jail implements ConfigurationSerializable {
         map.put("location", location);
         map.put("jailEnabled", jailEnabled);
         map.put("isWhitelist", isWhitelist);
+        map.put("denyMessage", denyMessage);
+        map.put("jailMessage", jailMessage);
         return map;
     }
 
@@ -35,6 +37,16 @@ public class Jail implements ConfigurationSerializable {
         } else {
             isWhitelist = false;
         }
+        if (map.get("denyMessage") != null) {
+            denyMessage = (String) map.get("denyMessage");
+        } else {
+            denyMessage = "&8&lYou are not allowed to use a horn here!";
+        }
+        if (map.get("jailMessage") != null) {
+            jailMessage = (String) map.get("jailMessage");
+        } else {
+            jailMessage = "&6&l&oBonk!&r&7&o You have been sent to &5&lHorn &d&lJail.";
+        }
     }
 
     public Jail(Location location, boolean jailEnabled, boolean isWhitelist) {
@@ -48,6 +60,10 @@ public class Jail implements ConfigurationSerializable {
     private boolean jailEnabled;
 
     private boolean isWhitelist;
+
+    private String denyMessage;
+
+    private String jailMessage;
 
     public Location getLocation() {
         return location;
@@ -85,6 +101,22 @@ public class Jail implements ConfigurationSerializable {
 
     public static Boolean isWhitelist() {
         return jail.isWhitelist;
+    }
+
+    public static String getDenyMessage() {
+        return jail.denyMessage;
+    }
+
+    public static String getJailMessage() {
+        return jail.jailMessage;
+    }
+
+    public static void setDenyMessage(String message) {
+        jail.denyMessage = message;
+    }
+
+    public static void setJailMessage(String message) {
+        jail.jailMessage = message;
     }
 
 }

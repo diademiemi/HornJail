@@ -11,7 +11,11 @@ public class AreaList {
     public static HashMap<String, Area> areas = new HashMap<String, Area>();
 
     public static void addArea(Area area) {
-        areas.put(area.getName(), area);
+        if (!areas.containsKey(area.getName())) {
+            areas.put(area.getName(), area);
+        } else {
+            areas.replace(area.getName(), area);
+        }
     }
 
     public static void removeArea(Area area) {
@@ -25,6 +29,10 @@ public class AreaList {
 
     public static Area getArea(String name) {
         return areas.get(name);
+    }
+
+    public static HashMap<String, Area> getAreas() {
+        return areas;
     }
 
     public static Area getAreaByRegion(CuboidRegion region, Area exclude) {

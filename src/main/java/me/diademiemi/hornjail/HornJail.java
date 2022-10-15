@@ -27,6 +27,7 @@ public class HornJail extends JavaPlugin {
         "help",
         "area.create",
         "area.delete",
+        "area.list",
         "togglejail",
         "setjail",
         "togglewhitelist",
@@ -35,8 +36,9 @@ public class HornJail extends JavaPlugin {
     public void onEnable() {
         plugin = this;
 
+        HornIO.init();
+        HornIO.loadConfig();
 
-        Jail.setJail(new Jail(new Location(Bukkit.getWorld("world"), 0, 0, 0), false, false));
         pm = getServer().getPluginManager();
 
         for (String permission : permissions) {
@@ -48,7 +50,7 @@ public class HornJail extends JavaPlugin {
     }
 
     public void onDisable() {
-//        JailIO.writeConfig();
+        HornIO.writeConfig();
         plugin = null;
     }
 
