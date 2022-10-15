@@ -1,0 +1,11 @@
+name: HornJail
+description: Spigot plugin to block people from using a goat horn, or send them to a jail for it
+author: diademiemi
+version: 0.0.1
+main: me.diademiemi.hornjail.HornJail
+api-version: 1.13
+depend: [WorldEdit]
+commands:
+  hornjail:
+    description: Main command for HornJail
+    usage: /hornjail
